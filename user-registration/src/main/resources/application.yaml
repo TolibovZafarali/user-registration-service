@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: user-registration
+
+mail-server:
+  host: mail.domain.com
+  port: 587
