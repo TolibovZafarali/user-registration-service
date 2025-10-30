@@ -4,11 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InMemoryUserRepository implements UserRepository {
-    private HashMap<String, User> hashMap;
+    private final Map<String, User> users = new HashMap<>();;
 
     @Override
     public void save(User user) {
-        hashMap = new HashMap<>();
-        hashMap.put(User.getEmail())
+        System.out.println("Saving user: " + user.getName());
+        users.put(user.getEmail(), user);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return users.getOrDefault(email, null);
     }
 }

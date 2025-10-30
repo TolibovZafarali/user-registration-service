@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class EmailNotificationService implements NotificationService {
 
-    @Value("${mail-server.host}")
+    @Value("${mail.host}")
     private String host;
 
-    @Value("${mail-server.port}")
-    private int port;
+    @Value("${mail.port}")
+    private String port;
 
     @Override
     public void send(String message, String recipientEmail) {

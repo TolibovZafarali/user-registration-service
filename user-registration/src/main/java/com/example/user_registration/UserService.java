@@ -1,13 +1,16 @@
 package com.example.user_registration;
 
-public class UserService implements UserRepository, NotificationService {
-    @Override
-    public void send(String message, String recipientEmail) {
+import org.springframework.stereotype.Service;
 
-    }
+@Service
+public class UserService {
+    private UserRepository userRepository;
+    private NotificationService notificationService;
 
-    @Override
-    public void save(User user) {
-
+    public void registerUser(User user) {
+        userRepository = new InMemoryUserRepository();
+        userRepository.save(user);
+        notificationService = new EmailNotificationService();
+        notificationService.send("Account has been created", user.getEmail());
     }
 }
